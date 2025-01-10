@@ -20,19 +20,19 @@ Spots utilizes:
 
 ### 1. Profile Cutomization
 
-![alt text](./images/demo/profile-cutomization.png)
+![Profile Cutomization](./images/demo/profile-cutomization.png)
 
 ### 2. Create New Posts
 
-![alt text](./images/demo/New%20Post.png)
+![Add a New Post](./images/demo/New%20Post.png)
 
 ### 3. Iphone Compatibility!
 
-![alt text](./images/demo/iphone-compatibility.png)
+![Compatible on Iphones](./images/demo/iphone-compatibility.png)
 
 ## `!!!WEBSITE LINK!!!`
 
-[Click here to start your journey!]()
+[Click here to start your journey!](https://bombingrun3.github.io/se_project_spots/)
 
 ## Future Goals
 
