@@ -1,0 +1,22 @@
+.menubar {
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 0;
+}
+
+.menubar__logo {
+  width: 10px;
+  height: 16px;
+}
+
+.menubar__title {
+  font-family: "DM Mono";
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: 6px;
+  margin: 0;
+}
