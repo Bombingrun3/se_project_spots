@@ -29,7 +29,7 @@
 }
 
 .card__icon {
-  background-image: url(../images/like-icon-default.png);
+  background-image: url(../images/like-icon-default.svg);
   width: 23px;
   height: 20px;
   align-self: center;
