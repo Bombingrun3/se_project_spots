@@ -14,7 +14,7 @@ Spots utilizes:
     - CSS
     - Responsive Design
     - BEM Methodology
-    -Flexbox/FlexGrid
+    - Flexbox/FlexGrid
 
 ## Current Features
 
@@ -53,3 +53,9 @@ We would also like to implement a feature of being able to share content from Sp
 ### 4. Put a Pin in it!
 
 Users will be able to pin the location of where the photo was taken so that other adventurers can make their own memories there as well.
+
+#### Video Submission
+
+Here is the video link as requested by Triple Ten for Sprint 3
+
+[Sprint 3 Video](https://drive.google.com/file/d/1VMLclz9XolGw4z6ifT-qHVvpDvl80IAO/view?usp=sharing)
