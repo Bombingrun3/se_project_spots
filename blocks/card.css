@@ -31,6 +31,8 @@
 .card__icon {
   background-image: url(../images/like-icon-default.svg);
   background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
   width: 23px;
   height: 20px;
   align-self: center;
@@ -41,12 +43,13 @@
 
 .card__icon:hover {
   opacity: 100%;
+  cursor: pointer;
 }
 
 @media screen and (max-width: 1006px) {
   .card {
-    height: 318px;
-    width: 288px;
+    min-height: 318px;
+    width: 100%;
     object-fit: cover;
     display: block;
   }
@@ -57,6 +60,11 @@
 
   .card__description {
     font-size: 16px;
-    max-width: 270px;
+    max-width: 250px;
+  }
+
+  .card__icon {
+    width: 20px;
+    height: 18px;
   }
 }
