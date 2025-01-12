@@ -1,0 +1,149 @@
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  max-width: 1440px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  margin: 0 auto;
+  visibility: hidden;
+}
+
+.modal__opened {
+  visibility: visible;
+}
+
+.modal__container {
+  background-color: #fff;
+  position: relative;
+  max-width: 730px;
+  width: 100%;
+  padding: 32px 50px;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.modal__title {
+  margin: 0 auto 32px;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 4px 0;
+}
+
+.modal__close-button {
+  background-image: url(/images/Close-Icon.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  background-color: transparent;
+  size: fit-content;
+  border: none;
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  top: 32px;
+  right: 50px;
+  opacity: 40%;
+}
+.modal__close-button:hover {
+  cursor: pointer;
+  opacity: 100;
+}
+
+.modal__form {
+  display: flex;
+  align-content: center;
+  flex-direction: column;
+  justify-content: space-between;
+  row-gap: 32px;
+}
+
+.modal__label {
+  gap: 8px;
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.modal__input {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid #212121;
+  opacity: 40%;
+  margin-top: 8px;
+  padding: 16px 12px;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1;
+}
+
+.modal__input:hover {
+  cursor: pointer;
+  opacity: 100%;
+}
+
+.modal__submit-button {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  width: 156px;
+  height: 52px;
+  color: #fff;
+  background-color: black;
+  border-radius: 8px;
+  border: none;
+  padding: 18px auto;
+}
+
+.modal__submit-button:hover {
+  cursor: pointer;
+  opacity: 80%;
+}
+
+@media screen and (max-width: 1006px) {
+  .modal {
+    max-width: 1006px;
+  }
+
+  .modal__container {
+    max-width: 300px;
+    padding: 12px;
+  }
+
+  .modal__title {
+    margin: 0 auto 24px;
+    font-size: 20px;
+    font-weight: 500;
+    padding: 10px 0;
+  }
+
+  .modal__close-button {
+    top: 12px;
+    right: 12px;
+  }
+
+  .modal__form {
+    row-gap: 24px;
+  }
+
+  .modal__input {
+    font-size: 16px;
+  }
+
+  .modal__submit-button {
+    width: 100%;
+    padding: 18px auto;
+  }
+}
