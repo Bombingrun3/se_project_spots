@@ -51,6 +51,14 @@
         </section>
         <section class="gallery page__section">
           <ul class="gallery__list">
+            <template id="card-template"
+              ><li class="card">
+                <img class="card__image" src="" alt="" />
+                <div class="card__footer">
+                  <h3 class="card__description"></h3>
+                  <button class="card__icon" type="button"></button>
+                </div></li
+            ></template>
             <li class="card">
               <img
                 class="card__image"
@@ -129,22 +137,22 @@
         <div class="modal__container">
           <h3 class="modal__title">Edit profile</h3>
           <button class="modal__close-button" type="submit"></button>
-          <form class="modal__form" name="edit-profile">
-            <label class="modal__label" for="name"
+          <form class="modal__form" name="edit-profile" id="edit-profile-form">
+            <label class="modal__label" for="profile-name-input"
               >Name
               <input
                 class="modal__input"
                 type="text"
-                id="name"
+                id="profile-name-input"
                 placeholder="Type your name"
               />
             </label>
-            <label class="modal__label" for="description">
+            <label class="modal__label" for="profile-description-input">
               Description
               <input
                 class="modal__input"
                 type="text"
-                id="description"
+                id="profile-description-input"
                 placeholder="Describe yourself"
               />
             </label>
