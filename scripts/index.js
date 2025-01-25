@@ -41,6 +41,9 @@ const profileDescription = profile.querySelector(".profile__description");
 const inputName = document.querySelector("#profile-name-input");
 const inputDescription = document.querySelector("#profile-description-input");
 
+const cardTemplate = document.querySelector("#card-template");
+const galleryList = document.querySelector(".gallery__list");
+
 // Open/Close Edit-Profile-Modal
 
 function openEditProfileModal() {
@@ -67,3 +70,25 @@ function handleFormSubmit(evt) {
 }
 
 editProfileForm.addEventListener("submit", handleFormSubmit);
+
+// Add Cards with Template
+
+function getCardElement(data) {
+  const cardElement = cardTemplate.content
+    .querySelector(".card")
+    .cloneNode(true);
+
+  const cardDescription = cardElement.querySelector(".card__description");
+  cardDescription.textContent = data.name;
+
+  const cardImage = cardElement.querySelector(".card__image");
+  cardImage.src = data.link;
+  cardImage.name = data.name;
+
+  return cardElement;
+}
+
+for (let i = 0; i < initialCards.length; i++) {
+  const cardElement = getCardElement(initialCards[i]);
+  galleryList.prepend(cardElement);
+}
