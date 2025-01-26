@@ -49,11 +49,11 @@ const galleryList = document.querySelector(".gallery__list");
 function openEditProfileModal() {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
-  editProfileModal.classList.add("modal__opened");
+  editProfileModal.classList.add("modal_opened");
 }
 
 function closeEditProfileModal() {
-  editProfileModal.classList.remove("modal__opened");
+  editProfileModal.classList.remove("modal_opened");
 }
 
 editProfileButton.addEventListener("click", openEditProfileModal);
@@ -83,7 +83,7 @@ function getCardElement(data) {
 
   const cardImage = cardElement.querySelector(".card__image");
   cardImage.src = data.link;
-  cardImage.name = data.name;
+  cardImage.alt = data.name;
 
   return cardElement;
 }
