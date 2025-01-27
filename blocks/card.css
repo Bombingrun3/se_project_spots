@@ -45,6 +45,14 @@
   opacity: 100%;
   cursor: pointer;
 }
+.card__icon_liked {
+  background-image: url(../images/like-icon-liked.svg);
+  opacity: 100%;
+}
+
+.card__icon_liked:hover {
+  opacity: 40%;
+}
 
 @media screen and (max-width: 1006px) {
   .card {

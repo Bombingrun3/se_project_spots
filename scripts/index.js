@@ -105,6 +105,12 @@ function getCardElement(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
 
+  const cardLikeButton = cardElement.querySelector("#like-button");
+
+  cardLikeButton.addEventListener("click", () => {
+    cardLikeButton.classList.toggle("card__icon_liked");
+  });
+
   return cardElement;
 }
 
