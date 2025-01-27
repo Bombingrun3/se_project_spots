@@ -23,6 +23,10 @@ const initialCards = [
     name: "Mountain house",
     link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/6-photo-by-moritz-feldmann-from-pexels.jpg",
   },
+  {
+    name: "Golden Gate Bridge",
+    link: "https://practicum-content.s3.us-west-1.amazonaws.com/software-engineer/spots/7-photo-by-griffin-wooldridge-from-pexels.jpg",
+  },
 ];
 
 const editProfileButton = document.querySelector(".profile__edit-button");
@@ -91,7 +95,7 @@ function handleFormSubmit(evt) {
 
 editProfileForm.addEventListener("submit", handleFormSubmit);
 
-// -----Add Cards with Template-----
+// -----Add/Delete Cards with Template-----
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -108,7 +112,16 @@ function getCardElement(data) {
   const cardLikeButton = cardElement.querySelector("#like-button");
 
   cardLikeButton.addEventListener("click", () => {
-    cardLikeButton.classList.toggle("card__icon_liked");
+    cardLikeButton.classList.toggle("card__like-button_liked");
+  });
+
+  const cardDeleteButton = cardElement.querySelector("#delete-button");
+
+  cardDeleteButton.addEventListener("click", () => {
+    const cardElement = cardDeleteButton.closest(".card");
+    cardElement.remove();
+
+    getCardElement.remove();
   });
 
   return cardElement;
