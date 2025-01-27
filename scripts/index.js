@@ -44,34 +44,69 @@ const inputDescription = document.querySelector("#profile-description-input");
 const cardTemplate = document.querySelector("#card-template");
 const galleryList = document.querySelector(".gallery__list");
 
-// Open/Close Edit-Profile-Modal
+const newPostModal = document.querySelector("#new-post-modal");
+const newPostButton = profile.querySelector("#new-post-button");
+const closeNewPostButton = newPostModal.querySelector("#close-new-post-button");
 
-function openEditProfileModal() {
+// -----Open/Close Modal (Universal)------
+
+function openModal(modal) {
+  modal.classList.add("modal_opened");
+}
+
+editProfileButton.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
-  editProfileModal.classList.add("modal_opened");
+  openModal(editProfileModal);
+});
+
+newPostButton.addEventListener("click", () => {
+  openModal(newPostModal);
+});
+
+function closeModal(modal) {
+  modal.classList.remove("modal_opened");
 }
 
-function closeEditProfileModal() {
-  editProfileModal.classList.remove("modal_opened");
-}
+closeProfileButton.addEventListener("click", () => {
+  closeModal(editProfileModal);
+});
 
-editProfileButton.addEventListener("click", openEditProfileModal);
+closeNewPostButton.addEventListener("click", () => {
+  closeModal(newPostModal);
+});
 
-closeProfileButton.addEventListener("click", closeEditProfileModal);
-
-// Submit changes from Form and Close Modal
+// -----Submit changes from Form and Close Modal-----
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
-  closeEditProfileModal();
+  closeModal(editProfileModal);
 }
 
 editProfileForm.addEventListener("submit", handleFormSubmit);
 
-// Add Cards with Template
+// -----Submit New Post to Gallery-----
+
+// const newPostImageLink = initialCards.querySelector("link");
+// const newPostCaption = initialCards.querySelector("name");
+
+// const inputImageLink = document.querySelector("#image-link-input");
+// const inputCaption = document.querySelector("#image-caption-input");
+
+// const newPostForm = newPostModal.querySelector("#new-post-form");
+
+// function handleFormSubmit(evt) {
+//   evt.preventDefault();
+//   newPostImageLink.textContent = inputImageLink.value;
+//   newPostCaption.textContent = inputCaption.value;
+//   closeEditProfileModal();
+// }
+
+// newPostForm.addEventListener("submit", handleFormSubmit);
+
+// -----Add Cards with Template-----
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -88,7 +123,7 @@ function getCardElement(data) {
   return cardElement;
 }
 
-for (let i = 0; i < initialCards.length; i++) {
-  const cardElement = getCardElement(initialCards[i]);
+initialCards.forEach((card) => {
+  const cardElement = getCardElement(card);
   galleryList.prepend(cardElement);
-}
+});

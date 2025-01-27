@@ -31,7 +31,11 @@
           <div class="profile__content">
             <h2 class="profile__name">Bessie Coleman</h2>
             <p class="profile__description">Civil Aviator</p>
-            <button type="button" class="profile__edit-button">
+            <button
+              type="button"
+              class="profile__edit-button"
+              id="edit-profile-button"
+            >
               <img
                 class="profile__edit-link-icon"
                 src="./images/edit-profile-icon.svg"
@@ -40,7 +44,11 @@
               Edit Profile
             </button>
           </div>
-          <button class="profile__add-button" type="button">
+          <button
+            class="profile__add-button"
+            type="button"
+            id="new-post-button"
+          >
             <img
               class="profile__button-icon"
               src="./images/new-post-icon.svg"
@@ -68,7 +76,11 @@
       <div class="modal" id="edit-profile-modal">
         <div class="modal__container">
           <h3 class="modal__title">Edit profile</h3>
-          <button class="modal__close-button" type="button"></button>
+          <button
+            class="modal__close-button"
+            type="button"
+            id="open-edit-profile-modal-button"
+          ></button>
           <form class="modal__form" name="edit-profile" id="edit-profile-form">
             <label class="modal__label" for="profile-name-input"
               >Name
@@ -92,16 +104,20 @@
           </form>
         </div>
       </div>
-      <div class="modal modal_opened" id="new-post-modal">
+      <div class="modal" id="new-post-modal">
         <div class="modal__container">
           <h3 class="modal__title">New post</h3>
-          <button class="modal__close-button" type="button"></button>
+          <button
+            class="modal__close-button"
+            type="button"
+            id="close-new-post-button"
+          ></button>
           <form class="modal__form" name="new-post" id="new-post-form">
             <label class="modal__label" for="image-link-input"
               >Image link
               <input
                 class="modal__input"
-                type="text"
+                type="url"
                 id="image-link-input"
                 placeholder="Paste a link to the picture"
               />
