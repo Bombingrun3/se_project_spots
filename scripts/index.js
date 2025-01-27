@@ -48,6 +48,10 @@ const newPostModal = document.querySelector("#new-post-modal");
 const newPostButton = profile.querySelector("#new-post-button");
 const closeNewPostButton = newPostModal.querySelector("#close-new-post-button");
 
+const newPostForm = newPostModal.querySelector("#new-post-form");
+const inputImageLink = newPostForm.querySelector("#image-link-input");
+const inputCaption = newPostForm.querySelector("#image-caption-input");
+
 // -----Open/Close Modal (Universal)------
 
 function openModal(modal) {
@@ -87,25 +91,6 @@ function handleFormSubmit(evt) {
 
 editProfileForm.addEventListener("submit", handleFormSubmit);
 
-// -----Submit New Post to Gallery-----
-
-// const newPostImageLink = initialCards.querySelector("link");
-// const newPostCaption = initialCards.querySelector("name");
-
-// const inputImageLink = document.querySelector("#image-link-input");
-// const inputCaption = document.querySelector("#image-caption-input");
-
-// const newPostForm = newPostModal.querySelector("#new-post-form");
-
-// function handleFormSubmit(evt) {
-//   evt.preventDefault();
-//   newPostImageLink.textContent = inputImageLink.value;
-//   newPostCaption.textContent = inputCaption.value;
-//   closeEditProfileModal();
-// }
-
-// newPostForm.addEventListener("submit", handleFormSubmit);
-
 // -----Add Cards with Template-----
 
 function getCardElement(data) {
@@ -127,3 +112,19 @@ initialCards.forEach((card) => {
   const cardElement = getCardElement(card);
   galleryList.prepend(cardElement);
 });
+
+// -----Submit New Post to Gallery-----
+
+function handleNewPostSubmit(evt) {
+  evt.preventDefault();
+  const inputValues = {
+    name: inputCaption.value,
+    link: inputImageLink.value,
+  };
+  const cardElement = getCardElement(inputValues);
+  galleryList.prepend(cardElement);
+
+  closeModal(newPostModal);
+}
+
+newPostForm.addEventListener("submit", handleNewPostSubmit);
