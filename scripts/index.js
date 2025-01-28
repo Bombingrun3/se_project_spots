@@ -56,7 +56,12 @@ const newPostForm = newPostModal.querySelector("#new-post-form");
 const inputImageLink = newPostForm.querySelector("#image-link-input");
 const inputCaption = newPostForm.querySelector("#image-caption-input");
 
-// -----Open/Close Modal (Universal)------
+const previewModal = document.querySelector("#preview-modal");
+const closePreviewButton = previewModal.querySelector("#close-preview-button");
+const previewModalImage = previewModal.querySelector(".modal__image");
+const previewModalCaption = previewModal.querySelector(".modal__caption");
+
+// -----Open Modal (Universal)------
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
@@ -72,6 +77,8 @@ newPostButton.addEventListener("click", () => {
   openModal(newPostModal);
 });
 
+// -----Close Modal (Universal)------
+
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
 }
@@ -82,6 +89,10 @@ closeProfileButton.addEventListener("click", () => {
 
 closeNewPostButton.addEventListener("click", () => {
   closeModal(newPostModal);
+});
+
+closePreviewButton.addEventListener("click", () => {
+  closeModal(previewModal);
 });
 
 // -----Submit changes from Form and Close Modal-----
@@ -95,7 +106,7 @@ function handleFormSubmit(evt) {
 
 editProfileForm.addEventListener("submit", handleFormSubmit);
 
-// -----Add/Delete Cards with Template-----
+// -----Add New Cards with Template-----
 
 function getCardElement(data) {
   const cardElement = cardTemplate.content
@@ -109,11 +120,15 @@ function getCardElement(data) {
   cardImage.src = data.link;
   cardImage.alt = data.name;
 
+  // -----Like Cards Feature-----
+
   const cardLikeButton = cardElement.querySelector("#like-button");
 
   cardLikeButton.addEventListener("click", () => {
     cardLikeButton.classList.toggle("card__like-button_liked");
   });
+
+  // -----Delete Cards Feature-----
 
   const cardDeleteButton = cardElement.querySelector("#delete-button");
 
@@ -122,6 +137,15 @@ function getCardElement(data) {
     cardElement.remove();
 
     getCardElement.remove();
+  });
+
+  // -----Open Preview Modal-----
+
+  cardImage.addEventListener("click", () => {
+    openModal(previewModal);
+    previewModalImage.src = data.link;
+    previewModalImage.alt = data.name;
+    previewModalCaption.textContent = data.name;
   });
 
   return cardElement;
