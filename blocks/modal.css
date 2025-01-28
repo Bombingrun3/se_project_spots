@@ -144,8 +144,8 @@
   object-fit: contain;
   border: none;
   border-radius: 8px;
-  max-height: 90vh;
-  max-width: 90vw;
+  max-height: 80vh;
+  max-width: 80vw;
   align-self: center;
   overflow: hidden;
   display: block;
@@ -211,6 +211,7 @@
 
   .modal__image {
     width: 288px;
+    max-width: 90vw;
   }
 
   .modal__caption {
