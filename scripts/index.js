@@ -135,8 +135,6 @@ function getCardElement(data) {
   cardDeleteButton.addEventListener("click", () => {
     const cardElement = cardDeleteButton.closest(".card");
     cardElement.remove();
-
-    getCardElement.remove();
   });
 
   // -----Open Preview Modal-----
@@ -168,6 +166,7 @@ function handleNewPostSubmit(evt) {
   galleryList.prepend(cardElement);
 
   closeModal(newPostModal);
+  newPostForm.reset();
 }
 
 newPostForm.addEventListener("submit", handleNewPostSubmit);
