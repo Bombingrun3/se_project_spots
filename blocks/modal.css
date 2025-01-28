@@ -144,8 +144,8 @@
   object-fit: contain;
   border: none;
   border-radius: 8px;
-  max-height: 80vh;
-  max-width: 80vw;
+  max-height: 90vh;
+  max-width: 90vw;
   align-self: center;
   overflow: hidden;
   display: block;
@@ -176,6 +176,7 @@
 
   .modal__container_type_preview {
     padding: 0px;
+    width: auto;
   }
 
   .modal__title {

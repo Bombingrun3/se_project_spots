@@ -146,7 +146,7 @@ initialCards.forEach((card) => {
 
 // -----Submit New Post to Gallery-----
 
-function handleNewPostSubmit(evt) {
+function handleNewPostFormSubmit(evt) {
   evt.preventDefault();
   const inputValues = {
     name: inputCaption.value,
@@ -159,4 +159,4 @@ function handleNewPostSubmit(evt) {
   newPostForm.reset();
 }
 
-newPostForm.addEventListener("submit", handleNewPostSubmit);
+newPostForm.addEventListener("submit", handleNewPostFormSubmit);
