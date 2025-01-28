@@ -211,7 +211,8 @@
 
   .modal__image {
     width: 288px;
-    max-width: 90vw;
+    max-width: none;
+    max-height: none;
   }
 
   .modal__caption {
