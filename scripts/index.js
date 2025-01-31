@@ -163,14 +163,15 @@ newPostForm.addEventListener("submit", handleNewPostFormSubmit);
 
 // -----Close Modal with "Esc" Key-----
 
-// function closeModalOnEsc(evt) {
-//   if (evt.key === "Escape") {
-//     const openedModal = document.classList.contains(".modal_opened");
-//     closeModal(openedModal);
-//     console.log(evt.key);
-//   }
-// }
+function closeModalOnEsc(evt) {
+  if (evt.key === "Escape") {
+    const openedModal =
+      document.querySelector.classList.contains(".modal_opened");
+    closeModal(openedModal);
+    console.log(evt.key);
+  }
+}
 
-// openedModal.addEventListener("keydown", () => {
-//   closeModalOnEsc(evt);
-// });
+openedModal.addEventListener("keydown", () => {
+  closeModalOnEsc(evt);
+});
