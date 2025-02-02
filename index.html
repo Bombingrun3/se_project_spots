@@ -98,6 +98,9 @@
                 type="text"
                 id="profile-name-input"
                 placeholder="Type your name"
+                required
+                minlength="2"
+                maxlength="40"
               />
             </label>
             <label class="modal__label" for="profile-description-input">
@@ -107,6 +110,9 @@
                 type="text"
                 id="profile-description-input"
                 placeholder="Describe yourself"
+                required
+                minlength="2"
+                maxlength="200"
               />
             </label>
             <button class="modal__submit-button" type="submit">Save</button>
@@ -129,6 +135,7 @@
                 type="url"
                 id="image-link-input"
                 placeholder="Paste a link to the picture"
+                required
               />
             </label>
             <label class="modal__label" for="image-caption-input">
@@ -138,6 +145,9 @@
                 type="text"
                 id="image-caption-input"
                 placeholder="Type your caption"
+                required
+                minlength="2"
+                maxlength="30"
               />
             </label>
             <button class="modal__submit-button" type="submit">Save</button>

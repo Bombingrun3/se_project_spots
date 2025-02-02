@@ -116,6 +116,9 @@
   line-height: 1;
 }
 
+.modal__input:invalid {
+}
+
 .modal__input:hover {
   cursor: pointer;
   opacity: 100%;
