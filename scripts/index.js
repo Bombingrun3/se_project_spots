@@ -64,6 +64,10 @@ const closeButtons = document.querySelectorAll(".modal__close-button");
 
 function openModal(modal) {
   modal.classList.add("modal_opened");
+
+  document.addEventListener("keydown", closeModalOnEsc);
+
+  modal.addEventListener("mousedown", closeModalOnClick);
 }
 
 editProfileButton.addEventListener("click", () => {
@@ -81,6 +85,10 @@ newPostButton.addEventListener("click", () => {
 
 function closeModal(modal) {
   modal.classList.remove("modal_opened");
+
+  document.removeEventListener("keydown", closeModalOnEsc);
+
+  document.removeEventListener("mousedown", closeModalOnClick);
 }
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
@@ -181,15 +189,9 @@ closeModalOnClick();
 
 // -----Close Modal with "Esc" Key-----
 
-// function closeModalOnEsc(evt) {
-//   if (evt.key === "Escape") {
-//     const openedModal =
-//       document.querySelector.classList.contains(".modal_opened");
-//     closeModal(openedModal);
-//     console.log(evt.key);
-//   }
-// }
-
-// openedModal.addEventListener("keydown", () => {
-//   closeModalOnEsc(evt);
-// });
+function closeModalOnEsc(evt) {
+  if (evt.key === "Escape") {
+    const modal = document.querySelector(".modal_opened");
+    closeModal(modal);
+  }
+}
