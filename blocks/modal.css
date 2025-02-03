@@ -106,19 +106,19 @@
   width: 100%;
   box-sizing: border-box;
   border-radius: 8px;
-  border: 1px solid #212121;
-  opacity: 40%;
+  border: 1px solid;
   margin-top: 8px;
   padding: 16px 12px;
   font-family: "Poppins", Arial, sans-serif;
   font-weight: 500;
   font-size: 20px;
   line-height: 1;
+  border-color: rgba(33, 33, 33, 0.4);
 }
 
 .modal__input:hover {
   cursor: pointer;
-  opacity: 100%;
+  border-color: rgba(33, 33, 33, 1);
 }
 
 .modal__input:invalid {

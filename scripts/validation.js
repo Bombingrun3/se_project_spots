@@ -31,6 +31,12 @@ const checkInputValidity = (formElement, inputElement) => {
   }
 };
 
+const hasValidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
+
 const toggleButtonState = (inputList, buttonElement) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add("modal__submit-button_disabled");
