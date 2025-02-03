@@ -1,5 +1,3 @@
-// config object
-
 const settings = {
   formSelector: ".modal__form",
   inputSelector: ".modal__input",
