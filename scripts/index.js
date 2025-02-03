@@ -74,7 +74,7 @@ editProfileButton.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
   openModal(editProfileModal);
-  resetValidation(editProfileForm, [inputName, inputDescription]);
+  resetValidation(editProfileForm, [inputName, inputDescription, settings]);
 });
 
 newPostButton.addEventListener("click", () => {
