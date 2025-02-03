@@ -122,11 +122,13 @@
 }
 
 .modal__input_type_error {
-  border: 1px solid #ff000099 0.6;
+  border: 1px solid #ff000099;
+  opacity: 0.6;
 }
 
 .modal__input_type_error:hover {
-  border: 1px solid #ff000099 1;
+  border: 1px solid #ff000099;
+  opacity: 1;
 }
 
 .modal__error {

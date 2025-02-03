@@ -95,7 +95,7 @@ function handleProfileFormSubmit(evt) {
   profileName.textContent = inputName.value;
   profileDescription.textContent = inputDescription.value;
   closeModal(editProfileModal);
-  disableButton(submitProfileButton);
+  disableButton(submitProfileButton, settings);
 }
 
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
@@ -159,10 +159,25 @@ function handleNewPostFormSubmit(evt) {
   galleryList.prepend(cardElement);
   closeModal(newPostModal);
   newPostForm.reset();
-  disableButton(newPostSubmitButton);
+  disableButton(newPostSubmitButton, settings);
 }
 
 newPostForm.addEventListener("submit", handleNewPostFormSubmit);
+
+// -----Close Modal on Click-----
+
+const closeModalOnClick = () => {
+  const modals = document.querySelectorAll(".modal");
+  modals.forEach((modal) => {
+    modal.addEventListener("click", function (event) {
+      if (event.target.classList.contains("modal")) {
+        closeModal(modal);
+      }
+    });
+  });
+};
+
+closeModalOnClick();
 
 // -----Close Modal with "Esc" Key-----
 
