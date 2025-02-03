@@ -121,8 +121,12 @@
   border-color: rgba(33, 33, 33, 1);
 }
 
-.modal__input:invalid {
-  border: 1px solid #ff000099;
+.modal__input_type_error {
+  border: 1px solid #ff000099 0.6;
+}
+
+.modal__input_type_error:hover {
+  border: 1px solid #ff000099 1;
 }
 
 .modal__error {
@@ -154,8 +158,8 @@
   opacity: 80%;
 }
 
-.modal_submit-button_disabled {
-  background-color: red;
+.modal__submit-button_disabled {
+  opacity: 50%;
 }
 
 .modal__image {
