@@ -66,15 +66,13 @@ function openModal(modal) {
   modal.classList.add("modal_opened");
 
   document.addEventListener("keydown", closeModalOnEsc);
-
-  modal.addEventListener("mousedown", closeModalOnClick);
 }
 
 editProfileButton.addEventListener("click", () => {
   inputName.value = profileName.textContent;
   inputDescription.value = profileDescription.textContent;
   openModal(editProfileModal);
-  resetValidation(editProfileForm, [inputName, inputDescription, settings]);
+  resetValidation(editProfileForm, [inputName, inputDescription], settings);
 });
 
 newPostButton.addEventListener("click", () => {
@@ -87,9 +85,8 @@ function closeModal(modal) {
   modal.classList.remove("modal_opened");
 
   document.removeEventListener("keydown", closeModalOnEsc);
-
-  document.removeEventListener("mousedown", closeModalOnClick);
 }
+
 closeButtons.forEach((button) => {
   const modal = button.closest(".modal");
 
