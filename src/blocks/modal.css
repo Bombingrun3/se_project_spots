@@ -51,7 +51,7 @@
 }
 
 .modal__close-button {
-  background-image: url(/images/Close-Icon.svg);
+  background-image: url("../images/Close-Icon.svg");
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
@@ -67,7 +67,7 @@
 }
 
 .modal__close-button_type_preview {
-  background-image: url(/images/close-icon-light.svg);
+  background-image: url("../images/close-icon-light.svg");
   position: absolute;
   top: 0;
   right: -52.5px;

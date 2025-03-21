@@ -6,7 +6,6 @@
     <meta name="description" content="Spots Landing Page" />
     <meta name="author" content="Ryan Bommarito" />
     <meta name="keywords" content="HTML, CSS" />
-    <link rel="stylesheet" href="./pages/index.css" />
     <link rel="shortcut icon" href="favicon.ico" />
     <title>Spots</title>
   </head>
@@ -15,7 +14,7 @@
       <header class="menubar">
         <img
           class="menubar__logo"
-          src="./images/spots-icon.svg"
+          src="<%=require('./images/spots-icon.svg')%>"
           alt="Spots Logo"
         />
         <!-- Decided to leave this h1 tag in so I can rename the site when review is over if I want to -->
@@ -25,7 +24,7 @@
         <section class="profile page__section">
           <img
             class="profile__avatar"
-            src="./images/avatar.jpg"
+            src="<%= require('./images/avatar.jpg')%"
             alt="Profile Picture"
           />
           <div class="profile__content">
@@ -38,7 +37,7 @@
             >
               <img
                 class="profile__edit-link-icon"
-                src="./images/edit-profile-icon.svg"
+                src="<%= require('./images/edit-profile-icon.svg')%"
                 alt="edit profile icon"
               />
               Edit Profile
@@ -183,7 +182,5 @@
         </div>
       </div>
     </div>
-    <script src="/scripts/validation.js" defer></script>
-    <script src="/scripts/index.js" defer></script>
   </body>
 </html>

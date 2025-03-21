@@ -1,3 +1,11 @@
+import "../pages/index.css";
+import {
+  enableValidation,
+  settings,
+  resetValidation,
+} from "../scripts/validation.js";
+import avatar from "../images/avatar.jpg";
+
 const initialCards = [
   {
     name: "Val Thorens",
@@ -192,3 +200,5 @@ function closeModalOnEsc(evt) {
     closeModal(modal);
   }
 }
+
+enableValidation(settings);
