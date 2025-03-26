@@ -4,8 +4,9 @@ import {
   settings,
   resetValidation,
 } from "../scripts/validation.js";
-import avatar from "../images/avatar.jpg";
+import { Api } from "../../utils/Api.js";
 
+// Can remove array once ready to deploy
 const initialCards = [
   {
     name: "Val Thorens",
@@ -155,6 +156,7 @@ function getCardElement(data) {
   return cardElement;
 }
 
+// Can remove once ready to deploy
 initialCards.forEach((card) => {
   const cardElement = getCardElement(card);
   galleryList.prepend(cardElement);
@@ -202,3 +204,23 @@ function closeModalOnEsc(evt) {
 }
 
 enableValidation(settings);
+
+const api = new Api({
+  baseUrl: "https://around-api.en.tripleten-services.com/v1",
+  headers: {
+    authorization: "1c9b6b75-fdbb-45e6-b261-c4a3ce5c7c23",
+    "Content-Type": "application/json",
+  },
+});
+
+api
+  .getInitialCards()
+  .then((initialCards) => {
+    initialCards.forEach((card) => {
+      const cardElement = getCardElement(card);
+      galleryList.prepend(cardElement);
+    });
+  })
+  .catch((err) => {
+    console.error(err);
+  });
