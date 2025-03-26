@@ -268,13 +268,13 @@ api
     console.error(err);
   });
 
-api.likeCard();
+// api.likeCard();
 
-api.dislikeCard();
+// api.dislikeCard();
 
-api
-  .updateAvatar(newAvatarUrl)
-  .then((updatedUserData) => {})
-  .catch((err) => {
-    console.error(err);
-  });
+// api
+//   .updateAvatar(newAvatarUrl)
+//   .then((updatedUserData) => {})
+//   .catch((err) => {
+//     console.error(err);
+//   });

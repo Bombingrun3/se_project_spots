@@ -22,11 +22,25 @@
       </header>
       <main class="content">
         <section class="profile page__section">
-          <img
-            class="profile__avatar"
-            src="<%=require('./images/avatar.jpg')%>"
-            alt="Profile Picture"
-          />
+          <div class="profile__avatar">
+            <img
+              class="profile__avatar-image"
+              src="<%=require('./images/avatar.jpg')%>"
+              alt="Profile Picture"
+            />
+            <button
+              type="button"
+              class="profile__avatar-edit-button"
+              id="edit-avatar-button"
+            >
+              <img
+                class="profile__edit-link-icon"
+                src="<%=require('./images/edit-avatar-icon.svg')%>"
+                alt="edit profile icon"
+              />
+              Edit Avatar
+            </button>
+          </div>
           <div class="profile__content">
             <h2 class="profile__name">Bessie Coleman</h2>
             <p class="profile__description">Civil Aviator</p>
