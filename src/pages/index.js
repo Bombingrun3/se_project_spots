@@ -225,7 +225,15 @@ api
     console.error(err);
   });
 
-api.getUserInfo().then(() => {});
+api
+  .getUserInfo()
+  .then((userData) => {
+    profileName.textContent = userData.name;
+    profileDescription.textContent = userData.about;
+  })
+  .catch((err) => {
+    console.error(err);
+  });
 
 api
   .editUserInfo({ name: inputName.value, about: inputDescription.value })
@@ -236,6 +244,37 @@ api
     inputName.value = updatedUserData.name;
     inputDescription.value = updatedUserData.about;
   })
+  .catch((err) => {
+    console.error(err);
+  });
+
+api
+  .addCard({ name: cardImage.alt, link: cardImage.src })
+  .then((newCardData) => {
+    const newCard = getCardElement(newCardData);
+    return galleryList.prepend(newCard);
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+api
+  .deleteCard(data._id)
+  .then(() => {
+    cardElement.remove();
+    alert("Card deleted successfully");
+  })
+  .catch((err) => {
+    console.error(err);
+  });
+
+api.likeCard();
+
+api.dislikeCard();
+
+api
+  .updateAvatar(newAvatarUrl)
+  .then((updatedUserData) => {})
   .catch((err) => {
     console.error(err);
   });
