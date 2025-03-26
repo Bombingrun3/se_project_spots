@@ -12,15 +12,37 @@ export class Api {
         }
         return Promise.reject(`Error: ${res.status}`);
       })
-      .then((data) => data)
-      .catch((err) => Promise.reject(err));
+      .catch((err) => err);
   }
 
-  getUserInfo() {}
-  //   GET request
+  getUserInfo() {
+    return fetch(`${this._baseUrl}/users/me`, { headers: this._headers })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => err);
+  }
 
-  editUserInfo() {}
-  //   PATCH request
+  editUserInfo({ name, about }) {
+    return fetch(`${this._baseUrl}/users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({ name, about }),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Error: ${res.status}`);
+      })
+      .catch((err) => {
+        console.error(err);
+        return Promise.reject(err);
+      });
+  }
 
   addCard() {}
   // POST request
@@ -29,8 +51,11 @@ export class Api {
   //   DELETE request
 
   likeCard() {}
+  //   PUT request
 
   dislikeCard() {}
+  //   DELETE request
 
   updateAvatar() {}
+  //   PATCH request
 }

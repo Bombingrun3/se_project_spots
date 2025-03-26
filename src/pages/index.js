@@ -224,3 +224,18 @@ api
   .catch((err) => {
     console.error(err);
   });
+
+api.getUserInfo().then(() => {});
+
+api
+  .editUserInfo({ name: inputName.value, about: inputDescription.value })
+  .then((updatedUserData) => {
+    profileName.textContent = updatedUserData.name;
+    profileDescription.textContent = updatedUserData.about;
+
+    inputName.value = updatedUserData.name;
+    inputDescription.value = updatedUserData.about;
+  })
+  .catch((err) => {
+    console.error(err);
+  });
