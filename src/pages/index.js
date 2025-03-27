@@ -165,23 +165,6 @@ initialCards.forEach((card) => {
   galleryList.prepend(cardElement);
 });
 
-// -----Submit New Post to Gallery-----
-
-function handleNewPostFormSubmit(evt) {
-  evt.preventDefault();
-  const inputValues = {
-    name: inputCaption.value,
-    link: inputImageLink.value,
-  };
-  const cardElement = getCardElement(inputValues);
-  galleryList.prepend(cardElement);
-  closeModal(newPostModal);
-  newPostForm.reset();
-  disableButton(newPostSubmitButton, settings);
-}
-
-newPostForm.addEventListener("submit", handleNewPostFormSubmit);
-
 // -----Close Modal on Click-----
 
 const closeModalOnClick = () => {
@@ -239,29 +222,31 @@ api
     console.error(err);
   });
 
-// api
-//   .addCard({ name: cardImage.alt, link: cardImage.src })
-//   .then((newCardData) => {
-//     const newCard = getCardElement(newCardData);
-//     return galleryList.prepend(newCard);
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
+// -----Submit New Post to Gallery-----
 
-// api
-//   .deleteCard(data._id)
-//   .then(() => {
-//     cardElement.remove();
-//     alert("Card deleted successfully");
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
+function handleNewPostFormSubmit(evt) {
+  evt.preventDefault();
+  const inputValues = {
+    name: inputCaption.value,
+    link: inputImageLink.value,
+  };
+  api
+    .addCard(inputValues)
+    .then((newCardData) => {
+      const newCard = getCardElement(newCardData);
+      return galleryList.prepend(newCard);
+    })
+    .then(() => {
+      closeModal(newPostModal);
+      newPostForm.reset();
+      disableButton(newPostSubmitButton, settings);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+}
 
-// api.likeCard();
-
-// api.dislikeCard();
+newPostForm.addEventListener("submit", handleNewPostFormSubmit);
 
 // -----Submit changes from Form and Close Edit Avatar Modal-----
 
@@ -302,6 +287,12 @@ function handleProfileFormSubmit(evt) {
   const name = inputName.value;
   const about = inputDescription.value;
   submitProfileButton.textContent = "Saving...";
+  // if (!newAvatarUrl) {
+  //   errorElement.textContent = "Please enter a valid URL";
+  //   submitAvatarButton.textContent = originalSubmitAvatarButton;
+  //   return;
+  // }
+
   api
     .editUserInfo({ name, about })
     .then((userData) => {
@@ -318,3 +309,17 @@ function handleProfileFormSubmit(evt) {
 }
 
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
+
+// api
+//   .deleteCard(data._id)
+//   .then(() => {
+//     cardElement.remove();
+//     alert("Card deleted successfully");
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
+
+// api.likeCard();
+
+// api.dislikeCard();
