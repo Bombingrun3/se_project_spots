@@ -44,6 +44,9 @@
 .modal__container_type_cancel {
 }
 
+.modal__container_type_avatar {
+}
+
 .modal__title {
   margin: 0 auto 32px;
   font-family: "Poppins", Arial, sans-serif;
@@ -207,7 +210,7 @@
   }
 
   .modal__title {
-    margin: 0 auto 24px;
+    margin: 0 auto 12px;
     font-size: 20px;
     font-weight: 500;
     padding: 10px 0;

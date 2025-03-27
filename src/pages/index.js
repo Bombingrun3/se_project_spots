@@ -41,6 +41,14 @@ const initialCards = [
 const editProfileButton = document.querySelector(".profile__edit-button");
 const editProfileModal = document.querySelector("#edit-profile-modal");
 
+const editAvatarButton = document.querySelector(".profile__avatar-edit-button");
+const editAvatarModal = document.querySelector("#edit-avatar-modal");
+const inputAvatarLink = document.querySelector("#avatar-image-input");
+const submitAvatarButton = editAvatarModal.querySelector(
+  ".modal__submit-button"
+);
+const editAvatarForm = editAvatarModal.querySelector("#edit-avatar-form");
+
 const editProfileForm = editProfileModal.querySelector("#edit-profile-form");
 const submitProfileButton = editProfileModal.querySelector(
   ".modal__submit-button"
@@ -48,6 +56,7 @@ const submitProfileButton = editProfileModal.querySelector(
 const profile = document.querySelector(".profile");
 const profileName = profile.querySelector(".profile__name");
 const profileDescription = profile.querySelector(".profile__description");
+const profileAvatar = profile.querySelector(".profile__avatar-image");
 
 const inputName = document.querySelector("#profile-name-input");
 const inputDescription = document.querySelector("#profile-description-input");
@@ -88,6 +97,12 @@ newPostButton.addEventListener("click", () => {
   openModal(newPostModal);
 });
 
+editAvatarButton.addEventListener("click", () => {
+  inputAvatarLink.value = profileAvatar.src;
+  openModal(editAvatarModal);
+  // resetValidation(editProfileForm, [inputName, inputDescription], settings);
+});
+
 // -----Close Modal (Universal)------
 
 function closeModal(modal) {
@@ -102,7 +117,7 @@ closeButtons.forEach((button) => {
   button.addEventListener("click", () => closeModal(modal));
 });
 
-// -----Submit changes from Form and Close Modal-----
+// -----Submit changes from Form and Close Edit Profile Modal-----
 
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
@@ -113,6 +128,17 @@ function handleProfileFormSubmit(evt) {
 }
 
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
+
+// -----Submit changes from Form and Close Edit Avatar Modal-----
+
+function handleAvatarFormSubmit(evt) {
+  evt.preventDefault();
+  profileAvatar.src = inputAvatarLink.value;
+  closeModal(editAvatarModal);
+  disableButton(submitAvatarButton, settings);
+}
+
+editAvatarForm.addEventListener("submit", handleAvatarFormSubmit);
 
 // -----Add New Cards with Template-----
 
