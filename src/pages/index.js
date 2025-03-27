@@ -100,7 +100,7 @@ newPostButton.addEventListener("click", () => {
 editAvatarButton.addEventListener("click", () => {
   inputAvatarLink.value = profileAvatar.src;
   openModal(editAvatarModal);
-  // resetValidation(editProfileForm, [inputName, inputDescription], settings);
+  resetValidation(editAvatarForm, [inputAvatarLink], settings);
 });
 
 // -----Close Modal (Universal)------
@@ -116,29 +116,6 @@ closeButtons.forEach((button) => {
 
   button.addEventListener("click", () => closeModal(modal));
 });
-
-// -----Submit changes from Form and Close Edit Profile Modal-----
-
-function handleProfileFormSubmit(evt) {
-  evt.preventDefault();
-  profileName.textContent = inputName.value;
-  profileDescription.textContent = inputDescription.value;
-  closeModal(editProfileModal);
-  disableButton(submitProfileButton, settings);
-}
-
-editProfileForm.addEventListener("submit", handleProfileFormSubmit);
-
-// -----Submit changes from Form and Close Edit Avatar Modal-----
-
-function handleAvatarFormSubmit(evt) {
-  evt.preventDefault();
-  profileAvatar.src = inputAvatarLink.value;
-  closeModal(editAvatarModal);
-  disableButton(submitAvatarButton, settings);
-}
-
-editAvatarForm.addEventListener("submit", handleAvatarFormSubmit);
 
 // -----Add New Cards with Template-----
 
@@ -256,51 +233,88 @@ api
   .then((userData) => {
     profileName.textContent = userData.name;
     profileDescription.textContent = userData.about;
+    profileAvatar.src = userData.avatar;
   })
   .catch((err) => {
     console.error(err);
   });
 
-api
-  .editUserInfo({ name: inputName.value, about: inputDescription.value })
-  .then((updatedUserData) => {
-    profileName.textContent = updatedUserData.name;
-    profileDescription.textContent = updatedUserData.about;
+// api
+//   .addCard({ name: cardImage.alt, link: cardImage.src })
+//   .then((newCardData) => {
+//     const newCard = getCardElement(newCardData);
+//     return galleryList.prepend(newCard);
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
 
-    inputName.value = updatedUserData.name;
-    inputDescription.value = updatedUserData.about;
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
-api
-  .addCard({ name: cardImage.alt, link: cardImage.src })
-  .then((newCardData) => {
-    const newCard = getCardElement(newCardData);
-    return galleryList.prepend(newCard);
-  })
-  .catch((err) => {
-    console.error(err);
-  });
-
-api
-  .deleteCard(data._id)
-  .then(() => {
-    cardElement.remove();
-    alert("Card deleted successfully");
-  })
-  .catch((err) => {
-    console.error(err);
-  });
+// api
+//   .deleteCard(data._id)
+//   .then(() => {
+//     cardElement.remove();
+//     alert("Card deleted successfully");
+//   })
+//   .catch((err) => {
+//     console.error(err);
+//   });
 
 // api.likeCard();
 
 // api.dislikeCard();
 
-// api
-//   .updateAvatar(newAvatarUrl)
-//   .then((updatedUserData) => {})
-//   .catch((err) => {
-//     console.error(err);
-//   });
+// -----Submit changes from Form and Close Edit Avatar Modal-----
+
+function handleAvatarFormSubmit(evt) {
+  evt.preventDefault();
+  const originalSubmitAvatarButton = submitAvatarButton.textContent;
+  const errorElement = document.querySelector("#avatar-image-input-error");
+  errorElement.textContent = "";
+  submitAvatarButton.textContent = "Saving...";
+  const newAvatarUrl = inputAvatarLink.value;
+
+  if (!newAvatarUrl) {
+    errorElement.textContent = "Please enter a valid URL";
+    submitAvatarButton.textContent = originalSubmitAvatarButton;
+    return;
+  }
+  api
+    .updateAvatar(newAvatarUrl)
+    .then((updatedUserData) => {
+      profileAvatar.src = updatedUserData.avatar;
+      submitAvatarButton.textContent = originalSubmitAvatarButton;
+      editAvatarForm.reset();
+      closeModal(editAvatarModal);
+      disableButton(submitAvatarButton, settings);
+    })
+    .catch((err) => {
+      errorElement.textContent = "Error updating avatar. Please try again.";
+      submitAvatarButton.textContent = originalSubmitAvatarButton;
+    });
+}
+
+editAvatarForm.addEventListener("submit", handleAvatarFormSubmit);
+
+// -----Submit changes from Form and Close Edit Profile Modal-----
+
+function handleProfileFormSubmit(evt) {
+  evt.preventDefault();
+  const name = inputName.value;
+  const about = inputDescription.value;
+  submitProfileButton.textContent = "Saving...";
+  api
+    .editUserInfo({ name, about })
+    .then((userData) => {
+      profileName.textContent = userData.name;
+      profileDescription.textContent = userData.about;
+      closeModal(editProfileModal);
+    })
+    .catch((err) => {
+      console.error(err);
+    })
+    .finally(() => {
+      submitProfileButton.textContent = "Save";
+    });
+}
+
+editProfileForm.addEventListener("submit", handleProfileFormSubmit);
