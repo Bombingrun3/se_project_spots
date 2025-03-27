@@ -43,6 +43,10 @@
   opacity: 100%;
 }
 
+.profile__avatar-edit-button-text {
+  visibility: visible;
+}
+
 .profile__content {
   display: flex;
   flex-direction: column;
@@ -87,6 +91,8 @@
   padding: 0;
   text-align: left;
   width: fit-content;
+  display: flex;
+  align-items: center;
 }
 
 .profile__edit-button:hover {
@@ -124,6 +130,24 @@
     width: 80px;
     height: 80px;
     margin-right: 0;
+  }
+
+  .profile__avatar-edit-button {
+    top: 52px;
+    left: 52px;
+    padding: 4px;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    border-radius: 6px;
+    gap: 8px;
+    width: 24px;
+    height: 24px;
+    opacity: 60%;
+  }
+
+  .profile__avatar-edit-button-text {
+    visibility: hidden;
   }
 
   .profile__content {
