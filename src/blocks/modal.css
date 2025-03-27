@@ -42,9 +42,12 @@
 }
 
 .modal__container_type_cancel {
-}
-
-.modal__container_type_avatar {
+  display: flex;
+  flex-direction: column;
+  font-family: "Poppins", Arial, sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  text-align: center;
 }
 
 .modal__title {
@@ -54,6 +57,13 @@
   font-weight: 500;
   line-height: 1;
   padding: 4px 0;
+}
+
+.modal__button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
 }
 
 .modal__close-button {
@@ -81,13 +91,18 @@
   padding: 0;
 }
 
+.modal__close-button_type_cancel {
+  right: -64px;
+  top: 0px;
+  background-image: url("../images/close-icon-light.svg");
+}
+
 .modal__close-button:hover {
   cursor: pointer;
   opacity: 100;
 }
 
 .modal__close-button_type_preview:hover {
-  cursor: pointer;
   opacity: 40%;
 }
 
@@ -137,6 +152,10 @@
   opacity: 1;
 }
 
+.modal__input_type_avatar-link {
+  margin-bottom: 32px;
+}
+
 .modal__error {
   margin-top: 8px;
   display: block;
@@ -170,6 +189,46 @@
   opacity: 50%;
 }
 
+.modal__delete-button {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  width: 156px;
+  height: 52px;
+  color: #212121;
+  background-color: #ff6565;
+  border-radius: 8px;
+  border: none;
+  padding: 18px 32px;
+}
+
+.modal__delete-button:hover {
+  background: #ff3333;
+  cursor: pointer;
+}
+
+.modal__cancel-button {
+  font-family: "Poppins", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1;
+  width: 156px;
+  height: 52px;
+  color: #212121;
+  background-color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 18px 32px;
+  border: 1px solid #212121;
+}
+
+.modal__cancel-button:hover {
+  background: #212121;
+  color: #ffffff;
+  cursor: pointer;
+}
+
 .modal__image {
   object-fit: contain;
   border: none;
@@ -197,6 +256,7 @@
 @media screen and (max-width: 1006px) {
   .modal {
     max-width: 1006px;
+    background-color: rgba(0, 0, 0, 0.8);
   }
 
   .modal__container {
@@ -216,6 +276,11 @@
     padding: 10px 0;
   }
 
+  .modal__button-container {
+    flex-direction: column;
+    gap: 12px;
+  }
+
   .modal__close-button {
     top: 12px;
     right: 12px;
@@ -226,12 +291,21 @@
     right: 0px;
   }
 
+  .modal__close-button_type_cancel {
+    right: 0px;
+    top: -52px;
+  }
+
   .modal__form {
     row-gap: 24px;
   }
 
   .modal__input {
     font-size: 16px;
+  }
+
+  .modal__input_type_avatar-link {
+    margin-bottom: 20px;
   }
 
   .modal__submit-button {

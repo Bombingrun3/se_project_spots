@@ -49,6 +49,17 @@ const submitAvatarButton = editAvatarModal.querySelector(
 );
 const editAvatarForm = editAvatarModal.querySelector("#edit-avatar-form");
 
+const cancelModal = document.querySelector("#cancel-modal");
+const cancelModalCloseButton = cancelModal.querySelector(
+  "#close-cancel-button"
+);
+const cancelModalDeleteButton = cancelModal.querySelector(
+  "#delete-cancel-button"
+);
+const cancelModalCancelButton = cancelModal.querySelector(
+  "#cancel-cancel-button"
+);
+
 const editProfileForm = editProfileModal.querySelector("#edit-profile-form");
 const submitProfileButton = editProfileModal.querySelector(
   ".modal__submit-button"
@@ -77,6 +88,9 @@ const previewModalImage = previewModal.querySelector(".modal__image");
 const previewModalCaption = previewModal.querySelector(".modal__caption");
 
 const closeButtons = document.querySelectorAll(".modal__close-button");
+
+let cardToDelete = null;
+let cardIdToDelete = null;
 
 // -----Open Modal (Universal)------
 
@@ -139,12 +153,11 @@ function getCardElement(data) {
     cardLikeButton.classList.toggle("card__like-button_liked");
   });
 
-  // -----Delete Cards Feature-----
+  // -----Delete Card Feature-----
 
   const cardDeleteButton = cardElement.querySelector("#delete-button");
-
   cardDeleteButton.addEventListener("click", () => {
-    cardElement.remove();
+    handleCardDelete(cardElement, data._id);
   });
 
   // -----Open Preview Modal-----
@@ -310,15 +323,31 @@ function handleProfileFormSubmit(evt) {
 
 editProfileForm.addEventListener("submit", handleProfileFormSubmit);
 
-// api
-//   .deleteCard(data._id)
-//   .then(() => {
-//     cardElement.remove();
-//     alert("Card deleted successfully");
-//   })
-//   .catch((err) => {
-//     console.error(err);
-//   });
+// -----Delete Cards Feature with API-----
+
+function handleCardDelete(cardElement, cardId) {
+  cardToDelete = cardElement;
+  cardIdToDelete = cardId;
+  openModal(cancelModal);
+}
+
+cancelModalDeleteButton.addEventListener("click", () => {
+  api
+    .deleteCard(cardIdToDelete)
+    .then(() => {
+      cardToDelete.remove();
+      closeModal(cancelModal);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
+});
+
+cancelModalCancelButton.addEventListener("click", () => {
+  closeModal(cancelModal);
+  cardToDelete = null;
+  cardIdToDelete = null;
+});
 
 // api.likeCard();
 

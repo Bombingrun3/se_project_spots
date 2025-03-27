@@ -202,17 +202,25 @@
             type="button"
             id="close-cancel-button"
           ></button>
-          <p>Are you sure you want to delete this image?</p>
-          <button
-            class="modal__delete-button"
-            type="button"
-            id="delete-cancel-button"
-          ></button>
-          <button
-            class="modal__cancel-button"
-            type="button"
-            id="cancel-cancel-button"
-          ></button>
+          <h3 class="modal__title">
+            Are you sure you want to delete this image?
+          </h3>
+          <div class="modal__button-container">
+            <button
+              class="modal__delete-button"
+              type="button"
+              id="delete-cancel-button"
+            >
+              Delete
+            </button>
+            <button
+              class="modal__cancel-button"
+              type="button"
+              id="cancel-cancel-button"
+            >
+              Cancel
+            </button>
+          </div>
         </div>
       </div>
       <div class="modal" id="edit-avatar-modal">
@@ -232,7 +240,7 @@
             <label class="modal__label" for="avatar-image-input">
               Profile Picture
               <input
-                class="modal__input"
+                class="modal__input modal__input_type_avatar-link"
                 type="url"
                 id="avatar-image-input"
                 placeholder="Paste the link to an image"
