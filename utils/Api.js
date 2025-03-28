@@ -4,6 +4,13 @@ export class Api {
     this._headers = options.headers;
   }
 
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Error: ${res.status}`);
+  }
+
   getInitialCards() {
     return fetch(`${this._baseUrl}/cards`, { headers: this._headers })
       .then((res) => {
@@ -12,7 +19,10 @@ export class Api {
         }
         return Promise.reject(`Error: ${res.status}`);
       })
-      .catch((err) => err);
+      .catch((err) => {
+        console.error(err);
+        throw err;
+      });
   }
 
   getUserInfo() {
