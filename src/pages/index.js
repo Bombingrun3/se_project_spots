@@ -3,6 +3,7 @@ import {
   enableValidation,
   settings,
   resetValidation,
+  disableButton,
 } from "../scripts/validation.js";
 import { Api } from "../../utils/Api.js";
 
@@ -143,7 +144,6 @@ function getCardElement(data) {
           cardLikeButton.classList.add("card__like-button_liked");
         })
         .catch((err) => {
-          cardLikeButton.classList.toggle("card__like-button_liked");
           console.error("Error updating like status:", err);
         });
     }
@@ -226,10 +226,12 @@ api
 
 function handleNewPostFormSubmit(evt) {
   evt.preventDefault();
+  const originalNewPostSubmitButton = newPostSubmitButton.textContent;
   const inputValues = {
     name: inputCaption.value,
     link: inputImageLink.value,
   };
+  newPostSubmitButton.textContent = "Saving...";
   api
     .addCard(inputValues)
     .then((newCardData) => {
@@ -238,11 +240,15 @@ function handleNewPostFormSubmit(evt) {
     })
     .then(() => {
       closeModal(newPostModal);
+      newPostSubmitButton.textContent = originalNewPostSubmitButton;
       newPostForm.reset();
       disableButton(newPostSubmitButton, settings);
     })
     .catch((err) => {
       console.error(err);
+    })
+    .finally(() => {
+      newPostSubmitButton.textContent = originalNewPostSubmitButton;
     });
 }
 
@@ -260,20 +266,20 @@ function handleAvatarFormSubmit(evt) {
 
   if (!newAvatarUrl) {
     errorElement.textContent = "Please enter a valid URL";
-    submitAvatarButton.textContent = originalSubmitAvatarButton;
     return;
   }
   api
     .updateAvatar(newAvatarUrl)
     .then((updatedUserData) => {
       profileAvatar.src = updatedUserData.avatar;
-      submitAvatarButton.textContent = originalSubmitAvatarButton;
       editAvatarForm.reset();
       closeModal(editAvatarModal);
       disableButton(submitAvatarButton, settings);
     })
     .catch((err) => {
-      errorElement.textContent = "Error updating avatar. Please try again.";
+      console.error(err);
+    })
+    .finally(() => {
       submitAvatarButton.textContent = originalSubmitAvatarButton;
     });
 }
