@@ -240,7 +240,6 @@ function handleNewPostFormSubmit(evt) {
     })
     .then(() => {
       closeModal(newPostModal);
-      newPostSubmitButton.textContent = originalNewPostSubmitButton;
       newPostForm.reset();
       disableButton(newPostSubmitButton, settings);
     })

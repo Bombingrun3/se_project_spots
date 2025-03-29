@@ -137,6 +137,10 @@
   border-color: rgba(33, 33, 33, 0.4);
 }
 
+.modal__input_type_avatar-link {
+  width: 630px;
+}
+
 .modal__input:hover {
   cursor: pointer;
   border-color: rgba(33, 33, 33, 1);
@@ -306,6 +310,7 @@
 
   .modal__input_type_avatar-link {
     margin-bottom: 20px;
+    width: 276px;
   }
 
   .modal__submit-button {
